@@ -1,12 +1,16 @@
 import css from "./MovieDetailsPage.module.css";
-import { useParams } from "react-router-dom";
-import { useEffect } from "react";
+import { NavLink, useParams, Outlet } from "react-router-dom";
+import { Suspense, useEffect } from "react";
 import { useState } from "react";
 import axios from "axios";
+import clsx from "clsx";
 
 export default function MovieDetailsPage() {
   const { movieId } = useParams();
   const [movie, setMovie] = useState(null);
+
+  const setActiveLink = ({ isActive }) =>
+    clsx(css.link, isActive && css.isActive);
 
   useEffect(() => {
     const url = `https://api.themoviedb.org/3/movie/${movieId}?language=en-US`;
@@ -43,6 +47,21 @@ export default function MovieDetailsPage() {
           </div>
         </div>
       )}
+      <ul className={css.links}>
+        <li>
+          <NavLink to="cast" className={setActiveLink}>
+            Cast
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to="reviews" className={setActiveLink}>
+            Reviews
+          </NavLink>
+        </li>
+      </ul>
+      <Suspense fallback={<div>Loading...</div>}>
+        <Outlet />
+      </Suspense>
     </>
   );
 }
