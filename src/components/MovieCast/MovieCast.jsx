@@ -2,26 +2,15 @@ import css from "./MovieCast.module.css";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { fetchMovieCast } from "../../movie-api";
 
 export default function MovieCast() {
   const [cast, setCast] = useState([]);
   const { movieId } = useParams();
 
-  const url = `https://api.themoviedb.org/3/movie/${movieId}/credits?language=en-US`;
-
-  const options = {
-    method: "GET",
-    headers: {
-      accept: "application/json",
-      Authorization:
-        "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJmZjc3Mjc4YjM4MTJlZTJkNWYyZDdiN2E2NzcyNjAzMyIsIm5iZiI6MTc0NzY2MTI5OC40MTYsInN1YiI6IjY4MmIzMWYyYjFiNDdjNDllODViNWE0OCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ._IHg7-Y9Fg2uGbOKNXczIGzj_ZIthFGNzSlzrMrh7zE",
-    },
-  };
-
   useEffect(() => {
-    axios
-      .get(url, options)
-      .then((response) => setCast(response.data.cast))
+    fetchMovieCast(movieId)
+      .then((response) => setCast(response))
       .catch((err) => console.error(err));
   }, []);
 

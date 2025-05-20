@@ -27,3 +27,8 @@ export default function App() {
     </div>
   );
 }
+
+// подобавляти індикатори завантаження
+// додати обробку помилок
+// додати lazy loading для компонентів MovieCast і MovieReviews
+// додати lazy loading для компонентів MovieList і MovieDetailsPage

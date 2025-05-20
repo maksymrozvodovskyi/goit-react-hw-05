@@ -4,6 +4,7 @@ import { Suspense, useEffect } from "react";
 import { useState } from "react";
 import axios from "axios";
 import clsx from "clsx";
+import { fetchMovieDetails } from "../../movie-api";
 
 export default function MovieDetailsPage() {
   const { movieId } = useParams();
@@ -13,20 +14,8 @@ export default function MovieDetailsPage() {
     clsx(css.link, isActive && css.isActive);
 
   useEffect(() => {
-    const url = `https://api.themoviedb.org/3/movie/${movieId}?language=en-US`;
-
-    const options = {
-      method: "GET",
-      headers: {
-        accept: "application/json",
-        Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJmZjc3Mjc4YjM4MTJlZTJkNWYyZDdiN2E2NzcyNjAzMyIsIm5iZiI6MTc0NzY2MTI5OC40MTYsInN1YiI6IjY4MmIzMWYyYjFiNDdjNDllODViNWE0OCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ._IHg7-Y9Fg2uGbOKNXczIGzj_ZIthFGNzSlzrMrh7zE",
-      },
-    };
-
-    axios
-      .get(url, options)
-      .then((response) => setMovie(response.data))
+    fetchMovieDetails(movieId)
+      .then((response) => setMovie(response))
       .catch((err) => console.error(err));
   }, [movieId]);
 
