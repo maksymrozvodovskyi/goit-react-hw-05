@@ -6,7 +6,6 @@ import axios from "axios";
 export default function MovieReviews() {
   const [reviews, setReviews] = useState([]);
   const { movieId } = useParams();
-  console.log(movieId);
 
   const url = `https://api.themoviedb.org/3/movie/${movieId}/reviews?language=en-US&page=1`;
 
