@@ -1,3 +1,11 @@
+import { useParams } from "react-router-dom";
+
 export default function MovieDetailsPage() {
-  return <></>;
+  const { movieId } = useParams();
+
+  return (
+    <>
+      <p>MovieDetailsPage</p>
+    </>
+  );
 }
