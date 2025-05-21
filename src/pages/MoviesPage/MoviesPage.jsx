@@ -1,3 +1,4 @@
+import css from "./MoviesPage.module.css";
 import { useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import { useDebounce } from "use-debounce";
@@ -40,15 +41,20 @@ export default function MoviesPage() {
   }, [debouncedQuery]);
 
   return (
-    <>
-      <input
-        type="text"
-        placeholder="Search movies"
-        value={query}
-        onChange={handleChange}
-      />
-      <button type="submit">Search</button>
+    <div className={css.container}>
+      <div className={css.searchBox}>
+        <input
+          type="text"
+          placeholder="Search movies"
+          value={query}
+          onChange={handleChange}
+          className={css.input}
+        />
+        <button type="submit" className={css.button}>
+          Search
+        </button>
+      </div>
       <MovieList movies={movies} />
-    </>
+    </div>
   );
 }
