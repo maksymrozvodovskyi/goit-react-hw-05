@@ -18,6 +18,14 @@ export const fetchTrendingMovies = async () => {
   return response.data.results;
 };
 
+export const fetchMovieByQuery = async (debouncedQuery) => {
+  const response = await axios.get(
+    `/search/movie?query=${debouncedQuery}&include_adult=false&language=en-US`,
+    options
+  );
+  return response.data.results;
+};
+
 export const fetchMovieDetails = async (movieId) => {
   const response = await axios.get(`/movie/${movieId}?language=en-US`, options);
   return response.data;
