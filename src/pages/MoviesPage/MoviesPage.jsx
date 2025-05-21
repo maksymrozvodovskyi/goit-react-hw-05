@@ -1,10 +1,16 @@
 import { useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import { useDebounce } from "use-debounce";
+import { useState } from "react";
 import { fetchMovieByQuery } from "../../movie-api";
 
+import MovieList from "../../components/MovieList/MovieList";
+
 export default function MoviesPage() {
+  const [movies, setMovies] = useState([]);
+
   const [searchParams, setSearchParams] = useSearchParams();
+
   const query = searchParams.get("query") ?? "";
 
   const [debouncedQuery] = useDebounce(query, 500);
@@ -25,8 +31,8 @@ export default function MoviesPage() {
 
   useEffect(() => {
     fetchMovieByQuery(debouncedQuery)
-      .then((data) => {
-        console.log(data);
+      .then((response) => {
+        setMovies(response);
       })
       .catch((error) => {
         console.error("Error fetching movies:", error);
@@ -42,6 +48,7 @@ export default function MoviesPage() {
         onChange={handleChange}
       />
       <button type="submit">Search</button>
+      <MovieList movies={movies} />
     </>
   );
 }
