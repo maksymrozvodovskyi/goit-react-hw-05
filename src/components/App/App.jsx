@@ -4,7 +4,7 @@ import { Routes, Route } from "react-router-dom";
 import Navigation from "../Navigation/Navigation";
 
 import HomePage from "../../pages/HomePage";
-import MoviesPage from "../../pages/MoviesPage";
+import MoviesPage from "../../pages/MoviesPage/MoviesPage";
 import MovieDetailsPage from "../../pages/MovieDetailsPage/MovieDetailsPage";
 import NotFoundPage from "../../pages/NotFoundPage";
 import MovieCast from "../MovieCast/MovieCast";
@@ -30,5 +30,6 @@ export default function App() {
 
 // подобавляти індикатори завантаження
 // додати обробку помилок
-// додати lazy loading для компонентів MovieCast і MovieReviews
-// додати lazy loading для компонентів MovieList і MovieDetailsPage
+// додати серчбар
+// додати lazy loading для компонентів
+// беклінк
