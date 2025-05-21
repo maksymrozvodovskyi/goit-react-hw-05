@@ -9,13 +9,11 @@ export default function MoviesPage() {
 
     const nextSearchParams = new URLSearchParams(searchParams); // створити копію
 
-    if (newQuery === "") {
-      nextSearchParams.delete("query"); // видалити параметр
-    } else {
+    if (newQuery !== "") {
       nextSearchParams.set("query", newQuery); //додати новий параметр
+    } else {
+      nextSearchParams.delete("query"); // видалити параметр
     }
-
-    nextSearchParams.set("query", newQuery); //добавити новий параметр
 
     setSearchParams(nextSearchParams); // відправити копію в юрл
   };
