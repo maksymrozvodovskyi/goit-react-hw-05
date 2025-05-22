@@ -1,6 +1,12 @@
 import css from "./MovieDetailsPage.module.css";
-import { NavLink, useParams, Outlet } from "react-router-dom";
-import { Suspense, useEffect } from "react";
+import {
+  NavLink,
+  useParams,
+  Outlet,
+  Link,
+  useLocation,
+} from "react-router-dom";
+import { Suspense, useEffect, useRef } from "react";
 import { useState } from "react";
 import axios from "axios";
 import clsx from "clsx";
@@ -9,6 +15,9 @@ import { fetchMovieDetails } from "../../movie-api";
 export default function MovieDetailsPage() {
   const { movieId } = useParams();
   const [movie, setMovie] = useState(null);
+
+  const location = useLocation();
+  const backLink = useRef(location.state);
 
   const setActiveLink = ({ isActive }) =>
     clsx(css.link, isActive && css.isActive);
@@ -21,6 +30,10 @@ export default function MovieDetailsPage() {
 
   return (
     <>
+      <Link to={backLink.current ?? "/movies"} className={css.backLink}>
+        Go back
+      </Link>
+
       {movie && (
         <div className={css.container}>
           <img

@@ -78,3 +78,28 @@
   color: #000;
   font-weight: 600;
 }
+
+.backLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  margin-top: 10px;
+  background-color: #1a7dda;
+  color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.backLink:hover {
+  background-color: #e0e0e0;
+  color: #000;
+}
+
+.backLink::before {
+  content: "←";
+  font-size: 1.2em;
+}
