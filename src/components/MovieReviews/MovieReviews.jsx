@@ -1,7 +1,6 @@
 import css from "./MovieReviews.module.css";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import axios from "axios";
 import { fetchMovieReviews } from "../../movie-api";
 
 export default function MovieReviews() {

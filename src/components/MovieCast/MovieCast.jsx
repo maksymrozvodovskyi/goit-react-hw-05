@@ -1,7 +1,6 @@
 import css from "./MovieCast.module.css";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import axios from "axios";
 import { fetchMovieCast } from "../../movie-api";
 
 export default function MovieCast() {
