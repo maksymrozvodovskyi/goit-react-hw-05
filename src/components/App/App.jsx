@@ -2,9 +2,9 @@ import { Routes, Route } from "react-router-dom";
 import { lazy, Suspense } from "react";
 
 import Navigation from "../Navigation/Navigation";
-import MovieCast from "../MovieCast/MovieCast";
-import MovieReviews from "../MovieReviews/MovieReviews";
 
+const MovieReviews = lazy(() => import("../MovieReviews/MovieReviews"));
+const MovieCast = lazy(() => import("../MovieCast/MovieCast"));
 const HomePage = lazy(() => import("../../pages/HomePage/HomePage")); // проміс
 const MoviesPage = lazy(() => import("../../pages/MoviesPage/MoviesPage"));
 const MovieDetailsPage = lazy(() =>

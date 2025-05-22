@@ -6,7 +6,7 @@ import {
   Link,
   useLocation,
 } from "react-router-dom";
-import { useEffect, useRef } from "react";
+import { Suspense, useEffect, useRef } from "react";
 import { useState } from "react";
 import clsx from "clsx";
 import { fetchMovieDetails } from "../../movie-api";
@@ -60,7 +60,9 @@ export default function MovieDetailsPage() {
           </NavLink>
         </li>
       </ul>
-      <Outlet />
+      <Suspense fallback={<div>Loading...</div>}>
+        <Outlet />
+      </Suspense>
     </>
   );
 }
