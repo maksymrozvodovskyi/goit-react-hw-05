@@ -16,6 +16,7 @@
 .input {
   flex-grow: 1;
   padding: 8px 16px;
+  margin-right: 5px;
   font-size: 16px;
   border: 2px solid #ccc;
   border-radius: 8px;
